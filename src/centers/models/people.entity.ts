@@ -22,4 +22,13 @@ export class DimPeople {
 
   @Column({ type: 'int', nullable: true })
   height_cm: number | null; // Altura en cm (nullable)
+
+  @Column({ type: 'float', nullable: true })
+  last_weight: number | null; // Altura en cm (nullable)
+
+  @Column({ type: 'varchar', length: 25, nullable: true })
+  admission_date: string | null; // Género de la persona (nullable)
+
+  @Column({ type: 'varchar', length: 25, nullable: true })
+  occupied_place_type: string | null; // Género de la persona (nullable)
 }

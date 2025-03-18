@@ -13,7 +13,7 @@ import { DimPeople } from './centers/models/people.entity';
     password: 'govtech1234', 
     database: 'govtech', 
     entities: [DimCenter,DimPeople], 
-    synchronize: true, 
+    synchronize: false, 
     logging: true
   }),CentersModule],
   controllers: [],
