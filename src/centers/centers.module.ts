@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DimCenter } from './models/center.entity';
-import { CentersService } from './services/CentersService';
 import { CentersController } from './controllers/CentersController';
+import { CenterService } from './services/imp/CenterService';
 import { DimPeople } from './models/people.entity';
 
 @Module({
     imports:[TypeOrmModule.forFeature([DimCenter,DimPeople])],
-    providers:[CentersService],
+    providers:[CenterService],
     controllers:[CentersController]
 })
 export class CentersModule {}

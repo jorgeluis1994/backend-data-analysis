@@ -1,15 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
-import { CentersService } from '..//services/CentersService';
+import { Controller, Get, Param } from '@nestjs/common';
+import { CenterService } from '../services/imp/CenterService';
 
-@Controller('centers/totals') // Ruta para acceder a los centros
+@Controller('centers') 
 export class CentersController {
 
+  constructor(private readonly _centersService: CenterService) {}
 
-  constructor(private readonly centersService: CentersService) {}
+  @Get(':id/:metric')
+  getCenterById( @Param('id') id:string,@Param('metric') metric:string   ){
+    return this._centersService.getCenterUsersAvg(id,metric);
+  }
 
-  // Ruta para obtener todos los centros
+  @Get(':metric')
+  getCenterByIdAll( @Param('metric') metric:string   ){
+    return this._centersService.getCenterUsersAvgAll(metric);
+  }
+
   @Get()
-  getCenters() {
-    return this.centersService.getTotalUsuariosPorCentro();// Llama al método en el servicio para obtener los centros
+  getCenterRestricAll(){
+    return this._centersService.getCenterTypeAll()
   }
 }
