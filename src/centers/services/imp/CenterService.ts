@@ -110,7 +110,7 @@ export class CenterService implements ICentroService{
 
                 return {
                    name: serie.group_value,
-                   data: [serie.desviacion_estandar,serie.promedio ] 
+                   data: [serie.promedio ] 
                  }
 
            });
