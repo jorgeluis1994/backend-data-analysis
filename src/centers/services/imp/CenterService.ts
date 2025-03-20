@@ -13,7 +13,8 @@ export class CenterService implements ICentroService{
                  
                ) {}
 
-
+               
+  
     async getCenterUsersAvgAll(metric: string): Promise<any> {
         try {
             const query = `
@@ -86,12 +87,31 @@ export class CenterService implements ICentroService{
             
         }
     }
+
     async getCenterRestricAll(): Promise<any> {
          try {
             
+        
          } catch (error) {
             
          }
     }
+    
+    async getMetricByCharacteristics(caracteristic: string): Promise<any[]> {
+        try {
+            console.log('Característica recibida:', caracteristic);
+            
+            const query = `SELECT * FROM _get_indicator_people($1)`;
+            const results = await this.centerRepository.query(query, [caracteristic]);
+    
+            console.log('Resultados:', results);
+            
+            return results;
+        } catch (error) {
+            console.error('Error al obtener métricas:', error);
+            throw new Error('No se pudo obtener las métricas'); // Lanza un error manejable
+        }
+    }
+    
 
 }

@@ -5,10 +5,12 @@ export interface ICentroService {
   getCenterUsersAvgAll( metric: string): Promise<any>;
 
   //obtener metricas por tipo de centro
-  getCenterTypeAll( ): Promise<any>;
+  getCenterTypeAll(): Promise<any>;
 
   //obtener metricas por tipo de centro
-  getCenterRestricAll( ): Promise<any>;
+  getCenterRestricAll(): Promise<any>;
+
+  getMetricByCharacteristics(caracteristic:string):Promise<any>;
 
 
 }

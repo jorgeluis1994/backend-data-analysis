@@ -8,7 +8,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('DataAnalysisModule')
     .setDescription(
-      'Documentación de la API para la consulta de grafico y otros endpoints',
+      'Documentación de la API para la consulta de grafico',
     ) // Descripción
     .setVersion('1.0')
     .addTag('reportes')
@@ -18,6 +18,7 @@ async function bootstrap() {
   // Crear el documento Swagger
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+  
   // Habilitar CORS globalmente
   app.enableCors();
 
