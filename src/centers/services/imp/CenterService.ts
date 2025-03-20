@@ -97,26 +97,27 @@ export class CenterService implements ICentroService{
          }
     }
 
-    async getMetricByCharacteristics(caracteristic: string): Promise<any[]> {
+    async getMetricByCharacteristics(caracteristic: string,group:string): Promise<any[]> {
         try {
             console.log('Característica recibida:', caracteristic);
             
-            const query = `SELECT * FROM _get_indicator_people($1)`;
-            const results = await this.centerRepository.query(query, [caracteristic]);
+            const query = `SELECT * FROM _get_indicator_people_center_group_($1,$2)`;
+            const results = await this.centerRepository.query(query, [caracteristic,group]);
     
             console.log('Resultados:', results);
 
             const series=results.map((serie)=>{
 
                 return {
-                   name: serie.center_type   ,
-                   data: [serie.desviacion_estandar,serie.promedio,serie.total_residentes ] 
+                   name: serie.group_value,
+                   data: [serie.desviacion_estandar,serie.promedio ] 
                  }
 
            });
+
+        
            return series;
             
-            return results;
         } catch (error) {
             console.error('Error al obtener métricas:', error);
             throw new Error('No se pudo obtener las métricas'); // Lanza un error manejable

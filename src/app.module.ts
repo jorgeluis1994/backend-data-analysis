@@ -7,11 +7,11 @@ import { DimPeople } from './centers/models/people.entity';
 @Module({
   imports: [ TypeOrmModule.forRoot({
     type: 'postgres',  
-    host: 'javierjamaica.com',  
-    port: 3809,  
-    username: 'govtech_adm', 
-    password: 'govtech1234', 
-    database: 'govtech', 
+    host: '173.249.10.18',  
+    port: 5432,  
+    username: 'smc_user', 
+    password: 'T€$t1Ng', 
+    database: 'smc_bigdata', 
     entities: [DimCenter,DimPeople], 
     synchronize: false, 
     logging: true

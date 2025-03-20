@@ -10,7 +10,7 @@ export interface ICentroService {
   //obtener metricas por tipo de centro
   getCenterRestricAll(): Promise<any>;
 
-  getMetricByCharacteristics(caracteristic:string):Promise<any>;
+  getMetricByCharacteristics(caracteristic:string,group:string):Promise<any>;
 
 
 }
