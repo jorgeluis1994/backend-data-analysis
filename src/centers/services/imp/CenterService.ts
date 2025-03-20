@@ -96,7 +96,7 @@ export class CenterService implements ICentroService{
             
          }
     }
-    
+
     async getMetricByCharacteristics(caracteristic: string): Promise<any[]> {
         try {
             console.log('Característica recibida:', caracteristic);
@@ -105,6 +105,16 @@ export class CenterService implements ICentroService{
             const results = await this.centerRepository.query(query, [caracteristic]);
     
             console.log('Resultados:', results);
+
+            const series=results.map((serie)=>{
+
+                return {
+                   name: serie.center_type   ,
+                   data: [serie.desviacion_estandar,serie.promedio,serie.total_residentes ] 
+                 }
+
+           });
+           return series;
             
             return results;
         } catch (error) {
